@@ -2,20 +2,17 @@ package com.example.webrtcapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Message
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.webrtcapp.databinding.ActivityCallBinding
-import com.example.webrtcapp.models.IceCandidateModel
-import com.example.webrtcapp.models.MessageModel
+import com.example.webrtcapp.data.models.IceCandidateModel
+import com.example.webrtcapp.data.models.MessageModel
 import com.example.webrtcapp.util.NewMessageInterface
 import com.example.webrtcapp.util.PeerConnectionObserver
-import com.example.webrtcapp.util.RTCAudioManager
 import com.google.gson.Gson
 import org.webrtc.IceCandidate
 import org.webrtc.MediaStream
-import org.webrtc.PeerConnection
 import org.webrtc.SessionDescription
 
 class CallActivity : AppCompatActivity(), NewMessageInterface {
@@ -68,12 +65,14 @@ class CallActivity : AppCompatActivity(), NewMessageInterface {
 
         binding.apply {
             callBtn.setOnClickListener{
-                socketRepository?.sendMessageToSocket(MessageModel(
+                socketRepository?.sendMessageToSocket(
+                    MessageModel(
                     "start_call",
                     username,
                     targetUserNameEt.text.toString(),
                     null
-                ))
+                )
+                )
                 target = targetUserNameEt.text.toString()
                 Log.d(TAG,"after call button pressed ")
             }
@@ -173,7 +172,8 @@ class CallActivity : AppCompatActivity(), NewMessageInterface {
             "ice_candidate" -> {
                 runOnUiThread{
                     try {
-                        val receivingCandidate =gson.fromJson(gson.toJson(message.data),IceCandidateModel::class.java)
+                        val receivingCandidate =gson.fromJson(gson.toJson(message.data),
+                            IceCandidateModel::class.java)
                         rtcClient?.addIceCandidate(
                             IceCandidate(
                                 receivingCandidate.sdpMid,

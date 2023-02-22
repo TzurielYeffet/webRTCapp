@@ -7,7 +7,7 @@ import android.util.Log
 import android.view.Surface
 import android.view.View
 import androidx.annotation.RawRes
-import com.example.webrtcapp.models.MessageModel
+import com.example.webrtcapp.data.models.MessageModel
 import org.webrtc.*
 import org.webrtc.PeerConnection.Observer
 import java.io.BufferedOutputStream
@@ -184,9 +184,11 @@ class RTCClient (
                             "sdp" to description?.description,
                             "type" to description?.type
                         )
-                        socketRepository.sendMessageToSocket(MessageModel(
+                        socketRepository.sendMessageToSocket(
+                            MessageModel(
                             "create_offer",username,target,offer
-                        ))
+                        )
+                        )
                     }
 
                     override fun onCreateFailure(p0: String?) {
