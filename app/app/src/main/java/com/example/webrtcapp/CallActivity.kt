@@ -8,6 +8,7 @@ import android.widget.Toast
 import com.example.webrtcapp.databinding.ActivityCallBinding
 import com.example.webrtcapp.data.models.IceCandidateModel
 import com.example.webrtcapp.data.models.MessageModel
+import com.example.webrtcapp.data.repositories.SocketRepository
 import com.example.webrtcapp.util.NewMessageInterface
 import com.example.webrtcapp.util.PeerConnectionObserver
 import com.google.gson.Gson
@@ -19,7 +20,7 @@ class CallActivity : AppCompatActivity(), NewMessageInterface {
 
     lateinit var binding:ActivityCallBinding
     private var username:String?=null
-    private var socketRepository:SocketRepository?=null
+    private var socketRepository: SocketRepository?=null
     private var rtcClient:RTCClient?=null
     private var target:String = ""
     private val gson = Gson()

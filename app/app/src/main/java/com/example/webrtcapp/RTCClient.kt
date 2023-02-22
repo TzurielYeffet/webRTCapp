@@ -1,21 +1,14 @@
 package com.example.webrtcapp
 
 import android.app.Application
-import android.content.res.Resources
-import android.provider.MediaStore.Audio.Media
 import android.util.Log
-import android.view.Surface
-import android.view.View
-import androidx.annotation.RawRes
 import com.example.webrtcapp.data.models.MessageModel
+import com.example.webrtcapp.data.repositories.SocketRepository
 import org.webrtc.*
 import org.webrtc.PeerConnection.Observer
-import java.io.BufferedOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
-import kotlin.io.path.outputStream
-import kotlin.io.path.pathString
 
 class RTCClient (
     private val application: Application,

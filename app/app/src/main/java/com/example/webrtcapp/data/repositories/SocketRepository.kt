@@ -1,4 +1,4 @@
-package com.example.webrtcapp
+package com.example.webrtcapp.data.repositories
 
 import android.util.Log
 import com.example.webrtcapp.data.models.MessageModel
