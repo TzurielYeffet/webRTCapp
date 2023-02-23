@@ -1,8 +1,8 @@
 package com.example.webrtcapp.util
 
-import com.example.webrtcapp.models.MessageModel
+import com.example.webrtcapp.data.models.MessageModel
 
 interface NewMessageInterface {
-    fun onNewMessage(message:MessageModel)
+    fun onNewMessage(message: MessageModel)
 
 }

@@ -1,4 +1,4 @@
-package com.example.webrtcapp
+package com.example.webrtcapp.ui.activities
 
 import android.Manifest.permission.CAMERA
 import android.content.Intent
@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
                 ).request{ allGranted,_,_ ->
                     if(allGranted){
                         startActivity(
-                            Intent(this,CallActivity::class.java)
+                            Intent(this, CallActivity::class.java)
                                 .putExtra("username",binding.username.text.toString())
                         )
                     }else{

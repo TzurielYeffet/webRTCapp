@@ -1,21 +1,13 @@
-package com.example.webrtcapp
+package com.example.webrtcapp.data.models
 
 import android.app.Application
-import android.content.res.Resources
-import android.provider.MediaStore.Audio.Media
 import android.util.Log
-import android.view.Surface
-import android.view.View
-import androidx.annotation.RawRes
-import com.example.webrtcapp.models.MessageModel
+import com.example.webrtcapp.data.repositories.SocketRepository
 import org.webrtc.*
 import org.webrtc.PeerConnection.Observer
-import java.io.BufferedOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
-import kotlin.io.path.outputStream
-import kotlin.io.path.pathString
 
 class RTCClient (
     private val application: Application,
@@ -184,9 +176,11 @@ class RTCClient (
                             "sdp" to description?.description,
                             "type" to description?.type
                         )
-                        socketRepository.sendMessageToSocket(MessageModel(
+                        socketRepository.sendMessageToSocket(
+                            MessageModel(
                             "create_offer",username,target,offer
-                        ))
+                        )
+                        )
                     }
 
                     override fun onCreateFailure(p0: String?) {

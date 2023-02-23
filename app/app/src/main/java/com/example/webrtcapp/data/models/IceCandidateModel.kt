@@ -1,4 +1,4 @@
-package com.example.webrtcapp.models
+package com.example.webrtcapp.data.models
 
 data class IceCandidateModel(
     val sdpMid:String,

@@ -1,7 +1,7 @@
-package com.example.webrtcapp
+package com.example.webrtcapp.data.repositories
 
 import android.util.Log
-import com.example.webrtcapp.models.MessageModel
+import com.example.webrtcapp.data.models.MessageModel
 import com.example.webrtcapp.util.NewMessageInterface
 import com.google.gson.Gson
 import org.java_websocket.client.WebSocketClient
@@ -34,7 +34,7 @@ class SocketRepository (private val messageInterface: NewMessageInterface){
 
             override fun onMessage(message: String?) {
                 try {
-                    messageInterface.onNewMessage(gson.fromJson(message,MessageModel::class.java))
+                    messageInterface.onNewMessage(gson.fromJson(message, MessageModel::class.java))
                 }catch (e:Exception){
                     e.printStackTrace()
                 }
